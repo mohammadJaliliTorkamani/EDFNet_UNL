@@ -1,0 +1,262 @@
+(env) quasar@Photonix:~/Downloads/EDFNet_UNL-main/EDFNet$ python main.py --modality all --model all --device cuda --dataset ./data/DDOS --train --test --edge_method sobel --epochs 3 --batch_size 16 --learning_rate 5e-4
+
+=== Training UNET with Modality: RGB ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+/home/quasar/Downloads/EDFNet_UNL-main/EDFNet/env/lib/python3.12/site-packages/albumentations/core/validation.py:114: UserWarning: ShiftScaleRotate is a special case of Affine transform. Please use Affine transform instead.
+  original_init(self, **validated_kwargs)
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+/home/quasar/Downloads/EDFNet_UNL-main/EDFNet/env/lib/python3.12/site-packages/torch/cuda/__init__.py:829: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+Epoch [ 1/3] | Loss: 1.53334 | Train Time: 1825.54s | Peak GPU: 7158.08 MB
+Validation Results => mean IoU: 0.18327 | per-class IoU: [0.669, 0.048, 0.000, 0.072, 0.282, 0.613, 0.012, 0.085, 0.042, 0.009] | boundary IoU: 0.20200 | Recall: 0.33962 | FPR: 0.03354 | FPS: 18.26 | Latency:  876.41 ms | Peak GPU: 4017.80 MB
+Epoch [ 2/3] | Loss: 1.18516 | Train Time: 1810.31s | Peak GPU: 7157.08 MB
+Validation Results => mean IoU: 0.19307 | per-class IoU: [0.703, 0.049, 0.000, 0.098, 0.290, 0.639, 0.010, 0.087, 0.044, 0.010] | boundary IoU: 0.21482 | Recall: 0.36966 | FPR: 0.03224 | FPS: 18.17 | Latency:  880.34 ms | Peak GPU: 4018.67 MB
+Epoch [ 3/3] | Loss: 1.01951 | Train Time: 1747.52s | Peak GPU: 7157.08 MB
+Validation Results => mean IoU: 0.18823 | per-class IoU: [0.700, 0.039, 0.000, 0.126, 0.243, 0.604, 0.010, 0.091, 0.059, 0.009] | boundary IoU: 0.21304 | Recall: 0.37533 | FPR: 0.03356 | FPS: 18.40 | Latency:  869.38 ms | Peak GPU: 4018.67 MB
+[INFO] Model saved as: checkpoints/unet_rgb.pth
+
+
+=== Testing RGB using checkpoint: checkpoints/unet_rgb.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.19133 | per-class IoU: [0.706, 0.032, 0.001, 0.125, 0.255, 0.626, 0.003, 0.105, 0.055, 0.006] | boundary IoU: 0.21465 | Recall: 0.36212 | FPR: 0.03206 | FPS: 17.59 | Latency:  909.58 ms
+
+=== Training UNET with Modality: RGBD ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.56126 | Train Time: 1851.59s | Peak GPU: 7162.46 MB
+Validation Results => mean IoU: 0.16869 | per-class IoU: [0.675, 0.043, 0.000, 0.082, 0.276, 0.475, 0.008, 0.074, 0.045, 0.007] | boundary IoU: 0.19360 | Recall: 0.33398 | FPR: 0.03821 | FPS: 17.89 | Latency:  894.13 ms | Peak GPU: 4023.37 MB
+Epoch [ 2/3] | Loss: 1.21136 | Train Time: 1807.38s | Peak GPU: 7162.46 MB
+Validation Results => mean IoU: 0.16286 | per-class IoU: [0.605, 0.053, 0.000, 0.083, 0.259, 0.507, 0.008, 0.064, 0.043, 0.008] | boundary IoU: 0.19168 | Recall: 0.34600 | FPR: 0.04095 | FPS: 18.28 | Latency:  875.24 ms | Peak GPU: 4024.24 MB
+Epoch [ 3/3] | Loss: 1.05209 | Train Time: 1805.58s | Peak GPU: 7162.46 MB
+Validation Results => mean IoU: 0.19818 | per-class IoU: [0.701, 0.052, 0.000, 0.109, 0.368, 0.594, 0.009, 0.088, 0.051, 0.009] | boundary IoU: 0.21307 | Recall: 0.40518 | FPR: 0.03170 | FPS: 18.30 | Latency:  874.19 ms | Peak GPU: 4024.24 MB
+[INFO] Model saved as: checkpoints/unet_rgbd.pth
+
+
+=== Testing RGBD using checkpoint: checkpoints/unet_rgbd.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.20156 | per-class IoU: [0.699, 0.046, 0.002, 0.115, 0.380, 0.606, 0.003, 0.109, 0.049, 0.006] | boundary IoU: 0.21405 | Recall: 0.39618 | FPR: 0.03049 | FPS: 18.31 | Latency:  873.86 ms
+
+=== Training UNET with Modality: RGBE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.55966 | Train Time: 1804.95s | Peak GPU: 7282.59 MB
+Validation Results => mean IoU: 0.16418 | per-class IoU: [0.609, 0.030, 0.000, 0.045, 0.301, 0.519, 0.013, 0.079, 0.037, 0.008] | boundary IoU: 0.18597 | Recall: 0.33456 | FPR: 0.03902 | FPS: 18.26 | Latency:  876.14 ms | Peak GPU: 4145.49 MB
+Epoch [ 2/3] | Loss: 1.21004 | Train Time: 1804.61s | Peak GPU: 7282.59 MB
+Validation Results => mean IoU: 0.18424 | per-class IoU: [0.679, 0.042, 0.001, 0.069, 0.341, 0.554, 0.013, 0.090, 0.045, 0.009] | boundary IoU: 0.20459 | Recall: 0.37070 | FPR: 0.03438 | FPS: 18.29 | Latency:  874.74 ms | Peak GPU: 4145.49 MB
+Epoch [ 3/3] | Loss: 1.04822 | Train Time: 1743.75s | Peak GPU: 7282.59 MB
+Validation Results => mean IoU: 0.19595 | per-class IoU: [0.661, 0.046, 0.000, 0.089, 0.377, 0.635, 0.010, 0.082, 0.048, 0.011] | boundary IoU: 0.21169 | Recall: 0.39289 | FPR: 0.03210 | FPS: 19.14 | Latency:  835.94 ms | Peak GPU: 4145.49 MB
+[INFO] Model saved as: checkpoints/unet_rgbe.pth
+
+
+=== Testing RGBE using checkpoint: checkpoints/unet_rgbe.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.20066 | per-class IoU: [0.669, 0.043, 0.002, 0.085, 0.388, 0.651, 0.003, 0.109, 0.050, 0.007] | boundary IoU: 0.21450 | Recall: 0.39241 | FPR: 0.03056 | FPS: 19.08 | Latency:  838.76 ms
+
+=== Training UNET with Modality: RGBDE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.57877 | Train Time: 1735.24s | Peak GPU: 7164.85 MB
+Validation Results => mean IoU: 0.16384 | per-class IoU: [0.645, 0.032, 0.000, 0.069, 0.250, 0.523, 0.007, 0.069, 0.037, 0.006] | boundary IoU: 0.18377 | Recall: 0.31531 | FPR: 0.03837 | FPS: 19.19 | Latency:  833.94 ms | Peak GPU: 4026.50 MB
+Epoch [ 2/3] | Loss: 1.25756 | Train Time: 1735.75s | Peak GPU: 7164.85 MB
+Validation Results => mean IoU: 0.18278 | per-class IoU: [0.671, 0.041, 0.000, 0.067, 0.306, 0.585, 0.012, 0.090, 0.047, 0.009] | boundary IoU: 0.19865 | Recall: 0.36031 | FPR: 0.03451 | FPS: 19.14 | Latency:  835.85 ms | Peak GPU: 4025.50 MB
+Epoch [ 3/3] | Loss: 1.10549 | Train Time: 1734.93s | Peak GPU: 7164.85 MB
+Validation Results => mean IoU: 0.17807 | per-class IoU: [0.627, 0.035, 0.000, 0.087, 0.307, 0.587, 0.006, 0.086, 0.035, 0.009] | boundary IoU: 0.19832 | Recall: 0.34205 | FPR: 0.03611 | FPS: 19.16 | Latency:  835.00 ms | Peak GPU: 4025.50 MB
+[INFO] Model saved as: checkpoints/unet_rgbde.pth
+
+
+=== Testing RGBDE using checkpoint: checkpoints/unet_rgbde.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.18088 | per-class IoU: [0.640, 0.037, 0.001, 0.085, 0.306, 0.591, 0.001, 0.109, 0.032, 0.006] | boundary IoU: 0.19934 | Recall: 0.33936 | FPR: 0.03498 | FPS: 19.08 | Latency:  838.69 ms
+
+=== Training UNET_PRETRAINED with Modality: RGB ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.31080 | Train Time: 1387.31s | Peak GPU: 1942.26 MB
+Validation Results => mean IoU: 0.18919 | per-class IoU: [0.588, 0.034, 0.001, 0.108, 0.361, 0.663, 0.013, 0.078, 0.039, 0.007] | boundary IoU: 0.18804 | Recall: 0.36056 | FPR: 0.03356 | FPS: 20.88 | Latency:  766.30 ms | Peak GPU:  951.73 MB
+Epoch [ 2/3] | Loss: 0.95756 | Train Time: 1389.23s | Peak GPU: 1942.26 MB
+Validation Results => mean IoU: 0.21115 | per-class IoU: [0.671, 0.043, 0.000, 0.133, 0.398, 0.695, 0.013, 0.098, 0.051, 0.010] | boundary IoU: 0.22002 | Recall: 0.39624 | FPR: 0.02892 | FPS: 20.86 | Latency:  767.00 ms | Peak GPU:  951.73 MB
+Epoch [ 3/3] | Loss: 0.82717 | Train Time: 1387.76s | Peak GPU: 1942.26 MB
+Validation Results => mean IoU: 0.19629 | per-class IoU: [0.685, 0.035, 0.000, 0.132, 0.407, 0.527, 0.016, 0.106, 0.049, 0.007] | boundary IoU: 0.21077 | Recall: 0.38862 | FPR: 0.03348 | FPS: 20.82 | Latency:  768.63 ms | Peak GPU:  951.73 MB
+[INFO] Model saved as: checkpoints/unet_pretrained_rgb.pth
+
+
+=== Testing RGB using checkpoint: checkpoints/unet_pretrained_rgb.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.20163 | per-class IoU: [0.700, 0.027, 0.001, 0.142, 0.427, 0.527, 0.004, 0.137, 0.045, 0.005] | boundary IoU: 0.21798 | Recall: 0.38534 | FPR: 0.03163 | FPS: 20.81 | Latency:  768.90 ms
+
+=== Training UNET_PRETRAINED with Modality: RGBD ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.41702 | Train Time: 1407.65s | Peak GPU: 2043.00 MB
+Validation Results => mean IoU: 0.16882 | per-class IoU: [0.669, 0.037, 0.000, 0.075, 0.299, 0.473, 0.013, 0.080, 0.036, 0.006] | boundary IoU: 0.18491 | Recall: 0.34662 | FPR: 0.03734 | FPS: 20.32 | Latency:  787.49 ms | Peak GPU: 1048.55 MB
+Epoch [ 2/3] | Loss: 1.06517 | Train Time: 1410.13s | Peak GPU: 2043.00 MB
+Validation Results => mean IoU: 0.18633 | per-class IoU: [0.643, 0.036, 0.000, 0.089, 0.383, 0.569, 0.010, 0.083, 0.043, 0.007] | boundary IoU: 0.19741 | Recall: 0.38472 | FPR: 0.03396 | FPS: 20.29 | Latency:  788.72 ms | Peak GPU: 1048.55 MB
+Epoch [ 3/3] | Loss: 0.87277 | Train Time: 1410.67s | Peak GPU: 2043.00 MB
+Validation Results => mean IoU: 0.20929 | per-class IoU: [0.702, 0.049, 0.000, 0.138, 0.383, 0.644, 0.010, 0.097, 0.062, 0.008] | boundary IoU: 0.21551 | Recall: 0.37970 | FPR: 0.02932 | FPS: 20.23 | Latency:  790.74 ms | Peak GPU: 1048.55 MB
+[INFO] Model saved as: checkpoints/unet_pretrained_rgbd.pth
+
+
+=== Testing RGBD using checkpoint: checkpoints/unet_pretrained_rgbd.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.21268 | per-class IoU: [0.711, 0.039, 0.001, 0.140, 0.404, 0.640, 0.002, 0.129, 0.054, 0.006] | boundary IoU: 0.22025 | Recall: 0.37764 | FPR: 0.02800 | FPS: 20.56 | Latency:  778.03 ms
+
+=== Training UNET_PRETRAINED with Modality: RGBE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.38290 | Train Time: 1425.97s | Peak GPU: 2043.00 MB
+Validation Results => mean IoU: 0.13661 | per-class IoU: [0.480, 0.021, 0.000, 0.061, 0.320, 0.359, 0.008, 0.076, 0.037, 0.004] | boundary IoU: 0.15148 | Recall: 0.31616 | FPR: 0.04669 | FPS: 20.46 | Latency:  782.06 ms | Peak GPU: 1048.55 MB
+Epoch [ 2/3] | Loss: 0.98252 | Train Time: 1427.74s | Peak GPU: 2043.00 MB
+Validation Results => mean IoU: 0.21077 | per-class IoU: [0.707, 0.035, 0.000, 0.118, 0.428, 0.639, 0.016, 0.107, 0.049, 0.009] | boundary IoU: 0.21673 | Recall: 0.39558 | FPR: 0.02896 | FPS: 20.45 | Latency:  782.47 ms | Peak GPU: 1048.55 MB
+Epoch [ 3/3] | Loss: 0.84450 | Train Time: 1427.65s | Peak GPU: 2043.00 MB
+Validation Results => mean IoU: 0.12149 | per-class IoU: [0.428, 0.020, 0.000, 0.109, 0.271, 0.298, 0.010, 0.045, 0.030, 0.004] | boundary IoU: 0.14252 | Recall: 0.28916 | FPR: 0.05244 | FPS: 20.44 | Latency:  782.93 ms | Peak GPU: 1048.55 MB
+[INFO] Model saved as: checkpoints/unet_pretrained_rgbe.pth
+
+
+=== Testing RGBE using checkpoint: checkpoints/unet_pretrained_rgbe.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.12230 | per-class IoU: [0.399, 0.017, 0.001, 0.117, 0.280, 0.324, 0.002, 0.054, 0.026, 0.003] | boundary IoU: 0.14399 | Recall: 0.28255 | FPR: 0.05175 | FPS: 20.59 | Latency:  777.20 ms
+
+=== Training UNET_PRETRAINED with Modality: RGBDE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.40192 | Train Time: 1503.50s | Peak GPU: 2044.79 MB
+Validation Results => mean IoU: 0.18289 | per-class IoU: [0.610, 0.032, 0.000, 0.090, 0.345, 0.623, 0.011, 0.082, 0.030, 0.007] | boundary IoU: 0.18196 | Recall: 0.34588 | FPR: 0.03539 | FPS: 19.12 | Latency:  836.67 ms | Peak GPU: 1054.22 MB
+Epoch [ 2/3] | Loss: 0.97945 | Train Time: 1517.33s | Peak GPU: 2044.54 MB
+Validation Results => mean IoU: 0.18517 | per-class IoU: [0.617, 0.031, 0.000, 0.108, 0.342, 0.610, 0.012, 0.085, 0.038, 0.007] | boundary IoU: 0.19237 | Recall: 0.36293 | FPR: 0.03442 | FPS: 19.11 | Latency:  837.18 ms | Peak GPU: 1054.22 MB
+Epoch [ 3/3] | Loss: 0.86609 | Train Time: 1518.28s | Peak GPU: 2044.54 MB
+Validation Results => mean IoU: 0.21590 | per-class IoU: [0.703, 0.044, 0.000, 0.115, 0.439, 0.673, 0.015, 0.107, 0.053, 0.009] | boundary IoU: 0.23024 | Recall: 0.41221 | FPR: 0.02759 | FPS: 19.27 | Latency:  830.47 ms | Peak GPU: 1054.22 MB
+[INFO] Model saved as: checkpoints/unet_pretrained_rgbde.pth
+
+
+=== Testing RGBDE using checkpoint: checkpoints/unet_pretrained_rgbde.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.21942 | per-class IoU: [0.720, 0.035, 0.001, 0.124, 0.458, 0.664, 0.004, 0.132, 0.049, 0.007] | boundary IoU: 0.23422 | Recall: 0.40435 | FPR: 0.02638 | FPS: 19.62 | Latency:  815.37 ms
+
+=== Training DEEPLABV3 with Modality: RGB ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.32685 | Train Time: 1623.43s | Peak GPU: 5095.12 MB
+Validation Results => mean IoU: 0.18196 | per-class IoU: [0.666, 0.032, 0.000, 0.076, 0.374, 0.543, 0.011, 0.073, 0.039, 0.006] | boundary IoU: 0.17303 | Recall: 0.36425 | FPR: 0.03287 | FPS: 19.10 | Latency:  837.50 ms | Peak GPU: 1215.59 MB
+Epoch [ 2/3] | Loss: 0.90654 | Train Time: 1626.98s | Peak GPU: 5095.12 MB
+Validation Results => mean IoU: 0.19606 | per-class IoU: [0.689, 0.039, 0.000, 0.099, 0.399, 0.586, 0.013, 0.086, 0.043, 0.007] | boundary IoU: 0.19532 | Recall: 0.39375 | FPR: 0.03051 | FPS: 19.14 | Latency:  836.09 ms | Peak GPU: 1214.34 MB
+Epoch [ 3/3] | Loss: 0.74242 | Train Time: 1623.47s | Peak GPU: 5095.12 MB
+Validation Results => mean IoU: 0.20733 | per-class IoU: [0.704, 0.057, 0.000, 0.093, 0.430, 0.608, 0.014, 0.103, 0.058, 0.008] | boundary IoU: 0.21623 | Recall: 0.41022 | FPR: 0.02814 | FPS: 19.12 | Latency:  836.71 ms | Peak GPU: 1214.34 MB
+[INFO] Model saved as: checkpoints/deeplabv3_rgb.pth
+
+
+=== Testing RGB using checkpoint: checkpoints/deeplabv3_rgb.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.21231 | per-class IoU: [0.727, 0.044, 0.001, 0.101, 0.455, 0.611, 0.003, 0.123, 0.052, 0.006] | boundary IoU: 0.22362 | Recall: 0.40710 | FPR: 0.02651 | FPS: 19.09 | Latency:  838.12 ms
+
+=== Training DEEPLABV3 with Modality: RGBD ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.46909 | Train Time: 1663.00s | Peak GPU: 5100.65 MB
+Validation Results => mean IoU: 0.18722 | per-class IoU: [0.659, 0.030, 0.000, 0.074, 0.396, 0.595, 0.007, 0.068, 0.037, 0.006] | boundary IoU: 0.17062 | Recall: 0.33171 | FPR: 0.03270 | FPS: 18.92 | Latency:  845.56 ms | Peak GPU: 1220.88 MB
+Epoch [ 2/3] | Loss: 1.00081 | Train Time: 1660.60s | Peak GPU: 5100.65 MB
+Validation Results => mean IoU: 0.18366 | per-class IoU: [0.636, 0.034, 0.000, 0.065, 0.374, 0.596, 0.011, 0.070, 0.043, 0.006] | boundary IoU: 0.17818 | Recall: 0.36259 | FPR: 0.03285 | FPS: 18.92 | Latency:  845.88 ms | Peak GPU: 1220.88 MB
+Epoch [ 3/3] | Loss: 0.78313 | Train Time: 1660.71s | Peak GPU: 5100.65 MB
+Validation Results => mean IoU: 0.19188 | per-class IoU: [0.663, 0.043, 0.000, 0.093, 0.358, 0.619, 0.011, 0.088, 0.036, 0.007] | boundary IoU: 0.19171 | Recall: 0.37560 | FPR: 0.03138 | FPS: 18.90 | Latency:  846.44 ms | Peak GPU: 1220.88 MB
+[INFO] Model saved as: checkpoints/deeplabv3_rgbd.pth
+
+
+=== Testing RGBD using checkpoint: checkpoints/deeplabv3_rgbd.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.19441 | per-class IoU: [0.666, 0.030, 0.001, 0.096, 0.378, 0.620, 0.003, 0.110, 0.035, 0.005] | boundary IoU: 0.19902 | Recall: 0.37849 | FPR: 0.03050 | FPS: 18.97 | Latency:  843.52 ms
+
+=== Training DEEPLABV3 with Modality: RGBE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.50205 | Train Time: 1654.50s | Peak GPU: 5100.65 MB
+Validation Results => mean IoU: 0.17080 | per-class IoU: [0.592, 0.037, 0.000, 0.082, 0.322, 0.566, 0.007, 0.065, 0.031, 0.005] | boundary IoU: 0.16087 | Recall: 0.30636 | FPR: 0.03598 | FPS: 18.96 | Latency:  843.78 ms | Peak GPU: 1220.88 MB
+Epoch [ 2/3] | Loss: 1.00403 | Train Time: 1648.79s | Peak GPU: 5100.65 MB
+Validation Results => mean IoU: 0.18708 | per-class IoU: [0.688, 0.039, 0.000, 0.082, 0.379, 0.547, 0.012, 0.084, 0.034, 0.007] | boundary IoU: 0.18716 | Recall: 0.37574 | FPR: 0.03206 | FPS: 18.95 | Latency:  844.50 ms | Peak GPU: 1220.88 MB
+Epoch [ 3/3] | Loss: 0.78586 | Train Time: 1653.46s | Peak GPU: 5100.65 MB
+Validation Results => mean IoU: 0.20398 | per-class IoU: [0.708, 0.052, 0.000, 0.081, 0.397, 0.640, 0.016, 0.096, 0.042, 0.008] | boundary IoU: 0.20888 | Recall: 0.39437 | FPR: 0.02827 | FPS: 18.97 | Latency:  843.46 ms | Peak GPU: 1220.88 MB
+[INFO] Model saved as: checkpoints/deeplabv3_rgbe.pth
+
+
+=== Testing RGBE using checkpoint: checkpoints/deeplabv3_rgbe.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.21208 | per-class IoU: [0.723, 0.040, 0.001, 0.085, 0.432, 0.668, 0.004, 0.119, 0.042, 0.006] | boundary IoU: 0.21908 | Recall: 0.39538 | FPR: 0.02610 | FPS: 19.00 | Latency:  841.96 ms
+
+=== Training DEEPLABV3 with Modality: RGBDE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.48888 | Train Time: 1677.24s | Peak GPU: 5102.94 MB
+Validation Results => mean IoU: 0.16304 | per-class IoU: [0.611, 0.033, 0.000, 0.071, 0.296, 0.513, 0.011, 0.058, 0.033, 0.005] | boundary IoU: 0.15339 | Recall: 0.33685 | FPR: 0.03749 | FPS: 18.52 | Latency:  863.75 ms | Peak GPU: 1222.18 MB
+Epoch [ 2/3] | Loss: 1.00331 | Train Time: 1676.44s | Peak GPU: 5102.94 MB
+Validation Results => mean IoU: 0.18188 | per-class IoU: [0.655, 0.034, 0.000, 0.060, 0.362, 0.569, 0.010, 0.080, 0.043, 0.006] | boundary IoU: 0.17356 | Recall: 0.35797 | FPR: 0.03250 | FPS: 18.48 | Latency:  865.97 ms | Peak GPU: 1223.43 MB
+Epoch [ 3/3] | Loss: 0.82371 | Train Time: 1680.11s | Peak GPU: 5102.94 MB
+Validation Results => mean IoU: 0.20091 | per-class IoU: [0.680, 0.053, 0.000, 0.100, 0.387, 0.625, 0.014, 0.090, 0.053, 0.008] | boundary IoU: 0.20088 | Recall: 0.39422 | FPR: 0.02909 | FPS: 18.26 | Latency:  876.02 ms | Peak GPU: 1223.43 MB
+[INFO] Model saved as: checkpoints/deeplabv3_rgbde.pth
+
+
+=== Testing RGBDE using checkpoint: checkpoints/deeplabv3_rgbde.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.20474 | per-class IoU: [0.680, 0.045, 0.001, 0.113, 0.403, 0.638, 0.004, 0.110, 0.049, 0.005] | boundary IoU: 0.20953 | Recall: 0.38916 | FPR: 0.02792 | FPS: 19.10 | Latency:  837.74 ms
+
+=== Training DEEPLABV3_PRETRAINED with Modality: RGB ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.48030 | Train Time: 1612.34s | Peak GPU: 5102.14 MB
+Validation Results => mean IoU: 0.17401 | per-class IoU: [0.638, 0.025, 0.000, 0.069, 0.343, 0.564, 0.008, 0.058, 0.030, 0.006] | boundary IoU: 0.16461 | Recall: 0.33637 | FPR: 0.03508 | FPS: 18.60 | Latency:  860.11 ms | Peak GPU: 1221.86 MB
+Epoch [ 2/3] | Loss: 0.99324 | Train Time: 1611.70s | Peak GPU: 5102.14 MB
+Validation Results => mean IoU: 0.18887 | per-class IoU: [0.696, 0.045, 0.000, 0.102, 0.351, 0.560, 0.013, 0.084, 0.030, 0.007] | boundary IoU: 0.18579 | Recall: 0.36709 | FPR: 0.03156 | FPS: 19.23 | Latency:  832.02 ms | Peak GPU: 1220.36 MB
+Epoch [ 3/3] | Loss: 0.79397 | Train Time: 1625.35s | Peak GPU: 5102.14 MB
+Validation Results => mean IoU: 0.20359 | per-class IoU: [0.691, 0.053, 0.000, 0.083, 0.421, 0.632, 0.015, 0.083, 0.051, 0.008] | boundary IoU: 0.20758 | Recall: 0.37780 | FPR: 0.02898 | FPS: 19.10 | Latency:  837.51 ms | Peak GPU: 1220.36 MB
+[INFO] Model saved as: checkpoints/deeplabv3_pretrained_rgb.pth
+
+
+=== Testing RGB using checkpoint: checkpoints/deeplabv3_pretrained_rgb.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.20845 | per-class IoU: [0.696, 0.043, 0.001, 0.098, 0.435, 0.651, 0.005, 0.100, 0.049, 0.006] | boundary IoU: 0.21785 | Recall: 0.38109 | FPR: 0.02772 | FPS: 19.13 | Latency:  836.50 ms
+
+=== Training DEEPLABV3_PRETRAINED with Modality: RGBD ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.41076 | Train Time: 1659.37s | Peak GPU: 5107.68 MB
+Validation Results => mean IoU: 0.16409 | per-class IoU: [0.633, 0.028, 0.000, 0.064, 0.282, 0.539, 0.009, 0.050, 0.031, 0.006] | boundary IoU: 0.14279 | Recall: 0.32457 | FPR: 0.03576 | FPS: 18.77 | Latency:  852.38 ms | Peak GPU: 1227.41 MB
+Epoch [ 2/3] | Loss: 0.95367 | Train Time: 1657.45s | Peak GPU: 5107.68 MB
+Validation Results => mean IoU: 0.19453 | per-class IoU: [0.721, 0.042, 0.000, 0.073, 0.349, 0.614, 0.012, 0.085, 0.042, 0.007] | boundary IoU: 0.19355 | Recall: 0.37376 | FPR: 0.02986 | FPS: 18.80 | Latency:  850.84 ms | Peak GPU: 1227.91 MB
+Epoch [ 3/3] | Loss: 0.75775 | Train Time: 1654.45s | Peak GPU: 5107.68 MB
+Validation Results => mean IoU: 0.20485 | per-class IoU: [0.721, 0.038, 0.000, 0.098, 0.426, 0.598, 0.015, 0.093, 0.051, 0.007] | boundary IoU: 0.20988 | Recall: 0.41022 | FPR: 0.02862 | FPS: 19.18 | Latency:  834.33 ms | Peak GPU: 1227.91 MB
+[INFO] Model saved as: checkpoints/deeplabv3_pretrained_rgbd.pth
+
+
+=== Testing RGBD using checkpoint: checkpoints/deeplabv3_pretrained_rgbd.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.21184 | per-class IoU: [0.735, 0.033, 0.001, 0.103, 0.455, 0.615, 0.004, 0.119, 0.047, 0.006] | boundary IoU: 0.22282 | Recall: 0.40501 | FPR: 0.02693 | FPS: 18.91 | Latency:  845.98 ms
+
+=== Training DEEPLABV3_PRETRAINED with Modality: RGBE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.44443 | Train Time: 1641.45s | Peak GPU: 5270.42 MB
+Validation Results => mean IoU: 0.18083 | per-class IoU: [0.656, 0.031, 0.000, 0.070, 0.342, 0.600, 0.010, 0.064, 0.029, 0.006] | boundary IoU: 0.17321 | Recall: 0.34487 | FPR: 0.03310 | FPS: 18.98 | Latency:  843.06 ms | Peak GPU: 1388.65 MB
+Epoch [ 2/3] | Loss: 0.97952 | Train Time: 1646.65s | Peak GPU: 5270.42 MB
+Validation Results => mean IoU: 0.17324 | per-class IoU: [0.614, 0.034, 0.000, 0.075, 0.333, 0.549, 0.010, 0.073, 0.039, 0.006] | boundary IoU: 0.16705 | Recall: 0.35557 | FPR: 0.03569 | FPS: 18.95 | Latency:  844.21 ms | Peak GPU: 1388.65 MB
+Epoch [ 3/3] | Loss: 0.77525 | Train Time: 1640.70s | Peak GPU: 5270.42 MB
+Validation Results => mean IoU: 0.19453 | per-class IoU: [0.682, 0.049, 0.000, 0.091, 0.386, 0.570, 0.016, 0.097, 0.048, 0.007] | boundary IoU: 0.19780 | Recall: 0.39128 | FPR: 0.03067 | FPS: 18.96 | Latency:  844.07 ms | Peak GPU: 1388.65 MB
+[INFO] Model saved as: checkpoints/deeplabv3_pretrained_rgbe.pth
+
+
+=== Testing RGBE using checkpoint: checkpoints/deeplabv3_pretrained_rgbe.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.20041 | per-class IoU: [0.702, 0.039, 0.001, 0.099, 0.396, 0.589, 0.005, 0.124, 0.044, 0.005] | boundary IoU: 0.20963 | Recall: 0.38848 | FPR: 0.02912 | FPS: 18.96 | Latency:  844.04 ms
+
+=== Training DEEPLABV3_PRETRAINED with Modality: RGBDE ===
+[DDOSDataset] Loaded samples: 30000 from ./data/DDOS/data/train
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/validation
+Epoch [ 1/3] | Loss: 1.47404 | Train Time: 1631.65s | Peak GPU: 5275.71 MB
+Validation Results => mean IoU: 0.18085 | per-class IoU: [0.614, 0.029, 0.000, 0.070, 0.354, 0.635, 0.010, 0.058, 0.033, 0.006] | boundary IoU: 0.16696 | Recall: 0.33700 | FPR: 0.03405 | FPS: 19.08 | Latency:  838.48 ms | Peak GPU: 1395.45 MB
+Epoch [ 2/3] | Loss: 0.99366 | Train Time: 1631.29s | Peak GPU: 5275.71 MB
+Validation Results => mean IoU: 0.18452 | per-class IoU: [0.672, 0.034, 0.000, 0.076, 0.311, 0.616, 0.009, 0.075, 0.046, 0.007] | boundary IoU: 0.17688 | Recall: 0.35944 | FPR: 0.03195 | FPS: 19.02 | Latency:  841.29 ms | Peak GPU: 1395.45 MB
+Epoch [ 3/3] | Loss: 0.79807 | Train Time: 1632.72s | Peak GPU: 5275.71 MB
+Validation Results => mean IoU: 0.18816 | per-class IoU: [0.677, 0.061, 0.000, 0.117, 0.356, 0.499, 0.017, 0.102, 0.048, 0.006] | boundary IoU: 0.18219 | Recall: 0.37438 | FPR: 0.03176 | FPS: 18.91 | Latency:  846.15 ms | Peak GPU: 1395.45 MB
+[INFO] Model saved as: checkpoints/deeplabv3_pretrained_rgbde.pth
+
+
+=== Testing RGBDE using checkpoint: checkpoints/deeplabv3_pretrained_rgbde.pth ===
+[DDOSDataset] Loaded samples: 2000 from ./data/DDOS/data/test
+Test Results => mean IoU: 0.19417 | per-class IoU: [0.690, 0.042, 0.001, 0.133, 0.386, 0.502, 0.003, 0.134, 0.047, 0.004] | boundary IoU: 0.19692 | Recall: 0.36499 | FPR: 0.02995 | FPS: 18.87 | Latency:  847.91 ms
+(env) quasar@Photonix:~/Downloads/EDFNet_UNL-main/EDFNet$ 

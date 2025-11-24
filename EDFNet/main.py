@@ -14,8 +14,11 @@
 
 # EXECUTION:
 # python main.py --modality rgb/rgbd/rgbe/rgbde/all --model unet/unet_pretrained/deeplabv3/deeplabv3_pretrained/all --device cpu/cuda --dataset <path/to/training_dataset> --train --test --visualize --edge_method canny/sobel --epochs X --batch_size X --learning_rate X
-# python main.py --modality all --model all --device cuda --dataset ./data/DDOS --train --test --visualize --edge_method canny --epochs 50 --batch_size 16 --learning_rate 5e-4
-# python main.py --modality all --model all --device cpu --dataset ./data/DDOS --train --test --visualize --edge_method canny --epochs 25 --batch_size 8 --learning_rate 1e-4
+# python main.py --modality all --model all --device cuda --dataset ./data/DDOS --train --test --visualize --edge_method sobel --epochs 50 --batch_size 16 --learning_rate 5e-4
+# python main.py --modality all --model all --device cpu --dataset ./data/DDOS --train --test --visualize --edge_method sobel --epochs 25 --batch_size 8 --learning_rate 1e-4
+
+# python main.py --modality all --model all --device cuda --dataset ./data/DDOS --train --test --edge_method sobel --epochs 3 --batch_size 16 --learning_rate 5e-4
+# python main.py --modality ? --model ? --device cuda --dataset ./data/DDOS --test --visualize --edge_method sobel --epochs 3 --batch_size 16 --learning_rate 5e-4
 
 import os
 import argparse
